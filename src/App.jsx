@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactsList from './components/ContactsList/ContactsList';
 import Filter from './components/Filter/Filter';
-cosnt test-error
 
 class App extends Component {
   defaultNames = [
@@ -12,7 +11,7 @@ class App extends Component {
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ];
- 
+
   state = {
     contacts: this.defaultNames,
     filter: '',
