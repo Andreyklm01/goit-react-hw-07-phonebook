@@ -2,7 +2,10 @@ import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactsList from './components/ContactsList/ContactsList';
+
 import Filter from './components/Filter/Filter';
+
+import { connect } from 'react-redux';
 
 class App extends Component {
   defaultNames = [
@@ -13,7 +16,7 @@ class App extends Component {
   ];
 
   state = {
-    contacts: this.defaultNames,
+    // contacts: this.defaultNames,
     filter: '',
   };
 
@@ -28,20 +31,20 @@ class App extends Component {
     }));
   }
 
-  addContact = (name, number) => {
-    const newContact = {
-      id: uuidv4(),
-      name,
-      number,
-    };
-    const findContactsMatch = this.state.contacts.find(contact => {
-      return contact.name.toLowerCase() === name.toLowerCase();
-    });
+  // addContact = (name, number) => {
+  //   const newContact = {
+  //     id: uuidv4(),
+  //     name,
+  //     number,
+  //   };
+  //   const findContactsMatch = this.state.contacts.find(contact => {
+  //     return contact.name.toLowerCase() === name.toLowerCase();
+  //   });
 
-    findContactsMatch
-      ? alert(`${name.toUpperCase()} is allready in contacts`)
-      : this.setContacts(newContact);
-  };
+  //   findContactsMatch
+  //     ? alert(`${name.toUpperCase()} is allready in contacts`)
+  //     : this.setContacts(newContact);
+  // };
 
   deleteContact = id => {
     this.setState(prevState => ({
@@ -66,11 +69,11 @@ class App extends Component {
   };
 
   visibleContacts = () => {
-    const { contacts, filter } = this.state;
+    // const { contacts, filter } = this.state;
     // if (!contacts) return;
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()),
-    );
+    // return contacts.filter(contact =>
+    //   contact.name.toLowerCase().includes(filter.toLowerCase()),
+    // );
   };
 
   render() {
@@ -78,14 +81,14 @@ class App extends Component {
     return (
       <>
         <h1 className="main-title">Phonebook</h1>
-        <ContactForm onSubmit={this.addContact} />
+        <ContactForm />
         <div>
           <h2 className="subtitle">Contacts</h2>
-          <Filter name={this.state.filter} onChange={this.filterContacts} />
-          <ContactsList
+          {/* <Filter name={this.state.filter} onChange={this.filterContacts} /> */}
+          {/* <ContactsList
             сontacts={visibleContacts}
             onDelete={this.deleteContact}
-          />
+          /> */}
         </div>
       </>
     );
