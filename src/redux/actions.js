@@ -20,4 +20,4 @@ const filterByName = name => ({
   payload: name,
 });
 
-export default { addName, deleteName };
+export default { addName, deleteName, filterByName };

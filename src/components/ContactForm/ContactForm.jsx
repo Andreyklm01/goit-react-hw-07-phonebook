@@ -23,9 +23,14 @@ class ContactForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
+    const findMatches = this.props.contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
+    );
 
-    if (!name || !number) return;
-    this.props.onSubmit(name, number);
+    findMatches
+      ? alert(`${name.toUpperCase()} is allready in contacts`)
+      : this.props.onSubmit(name, number);
+
     this.resetInput();
   };
 
@@ -82,8 +87,11 @@ class ContactForm extends Component {
 ContactForm.propTypes = {
   onSubmit: PropTypes.func,
 };
+const mapStateToProps = state => ({
+  contacts: state.items,
+});
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (value, number) => dispatch(actions.addName(value, number)),
 });
-export default connect(null, mapDispatchToProps)(ContactForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
