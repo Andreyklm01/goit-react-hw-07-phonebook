@@ -1,10 +1,14 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer from './reducer';
 
-const store = createStore(
-  contactsReducer,
-  composeWithDevTools(applyMiddleware()),
-);
+// const store = createStore(
+//   contactsReducer,
+//   composeWithDevTools(applyMiddleware()),
+// );
+
+const store = configureStore({
+  reducer: contactsReducer,
+  devTools: process.env.NODE_ENV === 'development',
+});
 
 export default store;
