@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
-import actions from '../../redux/actions';
+import { filterByName } from '../../redux/actions';
 import s from './Filter.module.css';
 
 const filterId = uuidv4();
@@ -30,7 +30,7 @@ const mapStateToProps = state => ({
   name: state.filter,
 });
 const mapDispatchToProps = dispatch => ({
-  onChange: event => dispatch(actions.filterByName(event.target.value)),
+  onChange: event => dispatch(filterByName(event.target.value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

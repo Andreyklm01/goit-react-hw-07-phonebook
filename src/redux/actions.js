@@ -13,6 +13,8 @@ const deleteName = createAction('contacts/DELETE_CONTACT');
 
 const filterByName = createAction('contacts/FILTER_CONTACTS');
 
+export { addName, deleteName, filterByName };
+
 // const addName = (name, number) => ({
 //   type: types.ADD,
 //   payload: {
@@ -31,5 +33,3 @@ const filterByName = createAction('contacts/FILTER_CONTACTS');
 //   type: types.FILTER,
 //   payload: name,
 // });
-
-export default { addName, deleteName, filterByName };
