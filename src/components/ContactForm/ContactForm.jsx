@@ -4,6 +4,7 @@ import { addName } from '../../redux/actions';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
+import { fetchContacts } from '../api/api';
 
 class ContactForm extends Component {
   state = {
@@ -43,7 +44,7 @@ class ContactForm extends Component {
 
   render() {
     const { name, number } = this.state;
-
+    console.log(fetchContacts());
     return (
       <div className={s.formContainer}>
         <form className={s.form} onSubmit={this.handleSubmit}>

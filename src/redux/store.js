@@ -1,24 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { createStore, applyMiddleware } from '@reduxjs/toolkit';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import contactsReducer from './reducer';
 
-// const store = createStore(
-//   contactsReducer,
-//   composeWithDevTools(applyMiddleware()),
-// );
-const persistConfig = {
-  key: 'contacts',
-  storage,
-};
+const store = createStore(
+  contactsReducer,
+  composeWithDevTools(applyMiddleware()),
+);
 
-const persistedReducer = persistReducer(persistConfig, contactsReducer);
-
-const store = configureStore({
-  reducer: persistedReducer,
-  devTools: process.env.NODE_ENV === 'development',
-});
-
-const persistor = persistStore(store);
-
-export { store, persistor };
+export default store;
