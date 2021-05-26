@@ -1,35 +1,23 @@
-import { v4 as uuidv4 } from 'uuid';
 import { createAction } from '@reduxjs/toolkit';
 
-const addName = createAction('contacts/ADD_CONTACT', (name, number) => ({
-  payload: {
-    id: uuidv4(),
-    name,
-    number,
-  },
-}));
+export const fetchContactsRequest = createAction(
+  'contacts/FETCH_CONTACTS_REQUEST',
+);
+export const fetchContactsSuccess = createAction(
+  'contacts/FETCH_CONTACTS_SUCCESS',
+);
+export const fetchContactsError = createAction('contacts/FETCH_CONTACTS_ERROR');
 
-const deleteName = createAction('contacts/DELETE_CONTACT');
+export const addContactRequest = createAction('contacts/ADD_CONTACT_REQUEST');
+export const addContactSuccess = createAction('contacts/ADD_CONTACT_SUCCESS');
+export const addContactError = createAction('contacts/ADD_CONTACT_ERROR');
 
-const filterByName = createAction('contacts/FILTER_CONTACTS');
+export const deleteContactRequest = createAction(
+  'contacts/DELETE_CONTACT_REQUEST',
+);
+export const deleteContactSuccess = createAction(
+  'contacts/DELETE_CONTACT_SUCCESS',
+);
+export const deleteContactError = createAction('contacts/DELETE_CONTACT_ERROR');
 
-export { addName, deleteName, filterByName };
-
-// const addName = (name, number) => ({
-//   type: types.ADD,
-//   payload: {
-//     id: uuidv4(),
-//     name,
-//     number,
-//   },
-// });
-
-// const deleteName = contactId => ({
-//   type: types.DELETE,
-//   payload: contactId,
-// });
-
-// const filterByName = name => ({
-//   type: types.FILTER,
-//   payload: name,
-// });
+export const filterByName = createAction('contacts/FILTER_CONTACTS');

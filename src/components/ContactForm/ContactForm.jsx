@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { addName } from '../../redux/actions';
+import { addName } from '../../redux/operations';
+import { getAllContacts } from '../../redux/selectors';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';
-import { fetchContacts } from '../api/api';
 
 class ContactForm extends Component {
   state = {
@@ -23,14 +23,14 @@ class ContactForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const { name, number } = this.state;
+    const { name } = this.state;
     const findMatches = this.props.contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase(),
     );
 
     findMatches
       ? alert(`${name.toUpperCase()} is allready in contacts`)
-      : this.props.onSubmit(name, number);
+      : this.props.onSubmit(this.state);
 
     this.resetInput();
   };
@@ -44,7 +44,6 @@ class ContactForm extends Component {
 
   render() {
     const { name, number } = this.state;
-    console.log(fetchContacts());
     return (
       <div className={s.formContainer}>
         <form className={s.form} onSubmit={this.handleSubmit}>
@@ -89,10 +88,10 @@ ContactForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 const mapStateToProps = state => ({
-  contacts: state.items,
+  contacts: getAllContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: (value, number) => dispatch(addName(value, number)),
+  onSubmit: data => dispatch(addName(data)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
