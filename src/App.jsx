@@ -1,16 +1,19 @@
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactsList from './components/ContactsList/ContactsList';
-import Filter from './components/Filter/Filter';
+import { Route, Switch } from 'react-router-dom';
+import NavBar from './Views/NavBar';
+import MainView from './Views/MainView';
+import LoginForm from './components/LoginForm';
+import RegisterForm from './components/RegisterForm';
+import ContactsView from './Views/ContactsView';
 
 const App = () => (
   <>
-    <h1 className="main-title">Phonebook</h1>
-    <ContactForm />
-    <div>
-      <h2 className="subtitle">Contacts</h2>
-      <Filter />
-      <ContactsList />
-    </div>
+    <NavBar />
+    <Switch>
+      <Route exact path="/" component={MainView} />
+      <Route path="/registration" component={RegisterForm} />
+      <Route path="/login" component={LoginForm} />
+      <Route path="/contacts" component={ContactsView} />
+    </Switch>
   </>
 );
 
