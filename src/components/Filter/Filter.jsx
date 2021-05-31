@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
-import { filterByName } from '../../redux/actions';
-import { getFilter } from '../../redux/selectors';
+import { filterByName } from '../../redux/contacts/contacts-actions';
+import { getFilter } from '../../redux/contacts/contacts-selectors';
 import s from './Filter.module.css';
 
 const filterId = uuidv4();

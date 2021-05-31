@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import { registration } from '../redux/auth/auth-operations';
 
 class RegisterForm extends Component {
   state = {
@@ -16,7 +18,8 @@ class RegisterForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.resetInput();
+    this.props.onRegister(this.state);
+    // this.resetInput();
   };
 
   resetInput = () => {
@@ -71,4 +74,8 @@ class RegisterForm extends Component {
   }
 }
 
-export default RegisterForm;
+const mapDispatchToProps = {
+  onRegister: registration,
+};
+
+export default connect(null, mapDispatchToProps)(RegisterForm);

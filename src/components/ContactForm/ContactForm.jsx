@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { addName } from '../../redux/operations';
-import { getAllContacts } from '../../redux/selectors';
+import { addName } from '../../redux/contacts/contacts-operations';
+import { getAllContacts } from '../../redux/contacts/contacts-selectors';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import s from './ContactForm.module.css';

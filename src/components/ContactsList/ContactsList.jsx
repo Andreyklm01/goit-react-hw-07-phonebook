@@ -1,8 +1,14 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchContacts, deleteName } from '../../redux/operations';
-import { getLoading, getVisibleContacts } from '../../redux/selectors';
+import {
+  fetchContacts,
+  deleteName,
+} from '../../redux/contacts/contacts-operations';
+import {
+  getLoading,
+  getVisibleContacts,
+} from '../../redux/contacts/contacts-selectors';
 import s from './ContactsList.module.css';
 
 class ContactsList extends Component {

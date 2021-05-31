@@ -9,15 +9,17 @@ import {
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
-} from './actions';
-axios.defaults.baseURL = 'http://localhost:4040';
+} from './contacts-actions';
+// axios.defaults.baseURL = 'http://localhost:4040';
 
-const fetchContacts = () => dispatch => {
+const fetchContacts = () => async dispatch => {
   dispatch(fetchContactsRequest());
-  axios
-    .get('/contacts')
-    .then(({ data }) => dispatch(fetchContactsSuccess(data)))
-    .catch(error => dispatch(fetchContactsError(error)));
+  try {
+    const response = await axios.get('/contacts');
+    dispatch(fetchContactsSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchContactsError(error));
+  }
 };
 
 const addName = data => dispatch => {
