@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AuthNav from '../components/AuthNav';
 import UserMenu from '../components/UserMenu';
+import { getIsAuthorized } from '../redux/auth/auth-selectors';
 
 const NavBar = ({ isAutorized }) => (
   <div>
@@ -16,4 +18,8 @@ const NavBar = ({ isAutorized }) => (
   </div>
 );
 
-export default NavBar;
+const mapStateToProps = state => ({
+  isAutorized: getIsAuthorized(state),
+});
+
+export default connect(mapStateToProps)(NavBar);

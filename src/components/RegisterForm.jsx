@@ -19,7 +19,7 @@ class RegisterForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.onRegister(this.state);
-    // this.resetInput();
+    this.resetInput();
   };
 
   resetInput = () => {

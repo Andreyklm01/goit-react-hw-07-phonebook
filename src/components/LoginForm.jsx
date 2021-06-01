@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { connect } from 'react-redux';
+import { login } from '../redux/auth/auth-operations';
 
 class LoginForm extends Component {
   state = {
@@ -15,6 +17,7 @@ class LoginForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.onLogin(this.state);
     this.resetInput();
   };
 
@@ -57,4 +60,8 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapDispatchToProps = {
+  onLogin: login,
+};
+
+export default connect(null, mapDispatchToProps)(LoginForm);

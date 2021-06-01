@@ -11,8 +11,8 @@ import thunk from 'redux-thunk';
 import authReducer from './auth/auth-reducer';
 import logger from 'redux-logger';
 import {
-  // persistStore,
-  // persistReducer,
+  persistStore,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -20,6 +20,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -30,13 +31,21 @@ const middleware = [
   logger,
 ];
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whiteList: ['token'],
+};
+
 const store = configureStore({
   reducer: {
     contacts: contactsReducer,
-    auth: authReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export default { store, persistor };

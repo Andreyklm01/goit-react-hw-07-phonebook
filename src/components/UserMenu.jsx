@@ -1,3 +1,7 @@
+import { connect } from 'react-redux';
+import { getUserName } from '../redux/auth/auth-selectors';
+import { logout } from '../redux/auth/auth-operations';
+
 const UserMenu = ({ name, onLogout }) => (
   <div>
     <p>Welcome, {name}</p>
@@ -6,5 +10,12 @@ const UserMenu = ({ name, onLogout }) => (
     </button>
   </div>
 );
+const mapStateToProps = state => ({
+  name: getUserName(state),
+});
 
-export default UserMenu;
+const mapDispatchToProps = {
+  onLogout: logout,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);
