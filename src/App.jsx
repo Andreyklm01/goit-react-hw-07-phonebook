@@ -7,6 +7,8 @@ import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import ContactsView from './Views/ContactsView';
 import { getCurrentUser } from './redux/auth/auth-operations';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 class App extends Component {
   componentDidMount() {
@@ -18,9 +20,23 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={MainView} />
-          <Route path="/registration" component={RegisterForm} />
-          <Route path="/login" component={LoginForm} />
-          <Route path="/contacts" component={ContactsView} />
+          <PublicRoute
+            path="/registration"
+            component={RegisterForm}
+            redirectTo="/contacts"
+            restricted
+          />
+          <PublicRoute
+            path="/login"
+            component={LoginForm}
+            redirectTo="/contacts"
+            restricted
+          />
+          <PrivateRoute
+            path="/contacts"
+            component={ContactsView}
+            redirectTo="/login"
+          />
         </Switch>
       </>
     );
