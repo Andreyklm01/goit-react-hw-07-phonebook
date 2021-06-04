@@ -1,17 +1,26 @@
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import AuthNav from '../components/AuthNav';
-import UserMenu from '../components/UserMenu';
+import AuthNav from '../components/AuthNav/AuthNav';
+import UserMenu from '../components/UserMenu/UserMenu';
 import { getIsAuthorized } from '../redux/auth/auth-selectors';
+import s from './NavBar.module.css';
 
 const NavBar = ({ isAutorized }) => (
-  <div>
-    <ul>
-      <li>
-        <NavLink to="/">Main</NavLink>
+  <div className={s.navigation}>
+    <ul className={s.list}>
+      <li className={s.item}>
+        <NavLink exact to="/" className={s.link} activeClassName={s.activeLink}>
+          Main
+        </NavLink>
       </li>
-      <li>
-        <NavLink to="/contacts">Phonebook</NavLink>
+      <li className={s.item}>
+        <NavLink
+          to="/contacts"
+          className={s.link}
+          activeClassName={s.activeLink}
+        >
+          Phonebook
+        </NavLink>
       </li>
     </ul>
     {isAutorized ? <UserMenu /> : <AuthNav />}

@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../redux/auth/auth-operations';
+import { registration } from '../../redux/auth/auth-operations';
 
-class LoginForm extends Component {
+class RegisterForm extends Component {
   state = {
+    name: '',
     email: '',
     password: '',
   };
@@ -17,22 +18,35 @@ class LoginForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onLogin(this.state);
+    this.props.onRegister(this.state);
     this.resetInput();
   };
 
   resetInput = () => {
     this.setState({
+      name: '',
       email: '',
       password: '',
     });
   };
 
   render() {
-    const { email, password } = this.state;
+    const { name, email, password } = this.state;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          <h3>Name</h3>
+          <label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+              onChange={this.handleChange}
+              required
+            />
+          </label>
           <h3>Email</h3>
           <label>
             <input
@@ -53,7 +67,7 @@ class LoginForm extends Component {
               required
             />
           </label>
-          <button type="submit">Log In</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     );
@@ -61,7 +75,7 @@ class LoginForm extends Component {
 }
 
 const mapDispatchToProps = {
-  onLogin: login,
+  onRegister: registration,
 };
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(null, mapDispatchToProps)(RegisterForm);
