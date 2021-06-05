@@ -1,13 +1,5 @@
-import {
-  configureStore,
-  createStore,
-  applyMiddleware,
-  getDefaultMiddleware,
-} from '@reduxjs/toolkit';
-import { combineReducers } from 'react';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import contactsReducer from './contacts/contacts-reducer';
-import thunk from 'redux-thunk';
 import authReducer from './auth/auth-reducer';
 import logger from 'redux-logger';
 import {

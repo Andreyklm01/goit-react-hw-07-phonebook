@@ -24,8 +24,10 @@
   width: 53px;
   height: 25px;
   border-radius: 20%;
+  transition: all 150ms linear;
 }
 
 .button:hover {
   background-color: rgb(253, 59, 59);
+  transition: all 150ms linear;
 }

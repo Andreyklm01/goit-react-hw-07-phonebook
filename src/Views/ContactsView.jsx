@@ -6,8 +6,8 @@ import s from './ContactsView.module.css';
 const ContactsView = () => (
   <section className={s.section}>
     <ContactForm />
-    <div>
-      <h2 className="subtitle">Contacts</h2>
+    <div className={s.content}>
+      <h2 className={s.subtitle}>Contacts</h2>
       <Filter />
       <ContactsList />
     </div>

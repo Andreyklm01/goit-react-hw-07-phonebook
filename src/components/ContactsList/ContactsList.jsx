@@ -18,12 +18,14 @@ class ContactsList extends Component {
 
   render() {
     return (
-      <>
+      <section className={s.section}>
         {this.props.isLoading && <h1>Loading...</h1>}
         <ul className={s.list}>
           {this.props.contacts.map(({ id, name, number }) => (
             <li className={s.item} key={id}>
-              {name}: {number}
+              <span className={s.contact}>
+                {name}: {number}
+              </span>
               <button
                 className={s.button}
                 type="button"
@@ -34,7 +36,7 @@ class ContactsList extends Component {
             </li>
           ))}
         </ul>
-      </>
+      </section>
     );
   }
 }

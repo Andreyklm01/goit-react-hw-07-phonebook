@@ -32,6 +32,10 @@
   border: 1px solid #808080;
   border-radius: 4px;
 }
+.input:focus {
+  outline: none;
+  border-color: rgb(8, 179, 108);
+}
 
 .button {
   width: 100px;
