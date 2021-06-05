@@ -13,7 +13,7 @@ import s from './ContactsList.module.css';
 
 class ContactsList extends Component {
   componentDidMount() {
-    setTimeout(() => this.props.getContacts(), 300);
+    setTimeout(() => this.props.getContacts(), 50);
   }
 
   render() {

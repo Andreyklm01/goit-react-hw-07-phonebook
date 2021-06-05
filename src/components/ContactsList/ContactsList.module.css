@@ -1,5 +1,4 @@
 .list {
-  margin-left: 40px;
   list-style: none;
   width: 400px;
   padding: 0;
@@ -13,9 +12,7 @@
   margin-bottom: 10px;
 }
 .button {
-  margin-left: 30px;
   border-radius: 3px;
-  border: none;
   background-color: rgb(142, 168, 240);
   color: aliceblue;
 }
